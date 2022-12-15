@@ -1,143 +1,125 @@
-// Toolbar
-@import "ui-variables";
+sheet-toolbar {
+    border-bottom: none;
 
-.sheet-toolbar,
-.layout-mode-popout .sheet-toolbar {
-    height: @toolbar-height;
-    min-height: @toolbar-height;
-    max-height: @toolbar-height;
-    border-color: @border-color-primary;
-    padding: @toolbar-padding-v 0 @toolbar-padding-v;
-    border-bottom: 1px solid #dfdfdf;
+    .btn-toolbar {
+        position: relative;
+        margin-left: 4px;
+        padding: 0 9px;
+        background: @white;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        opacity: 0.8;
+        cursor: pointer;
+        transition: all 0.2s ease-out;
 
-    .sheet-toolbar-container {
-      border-width:0;
-      background-image:none;
-      height:auto !important;
-      background-color: @white;
-      z-index: 1;
-      color: @blueDark;
-
-      .toolbar-Preferences {
-          background-color: white;
-      }
-      .item-container {
-          width:100%;
-
-          .window-title {
-              top:0;
-          }
-      }
-    }
-
-}
-
-.toolbar-window-controls {
-  margin:5px 9px;
-}
-
-.search-bar {
-    margin:0;
-    .menu {
-        .header-container {
-            height: @toolbar-item-height;
-            margin: 0 10.5px 0 0;
-
-            input {
-                transition: border-width 0.1s ease-in;
-                border:1px solid @toolbar-btn-border;
-                border-radius: 3px;
-                box-shadow: none;
-                height:@toolbar-item-height;
-                min-height:@toolbar-item-height;
-                line-height: @toolbar-item-height;
-                padding: 0 @toolbar-item-height;
-                width: 100%;
-                color:@blueDark;
-                background-color: @toolbar-btn-bg;
-
-                &:not(.empty) {
-                  background-color: @toolbar-btn-active-bg;
-                  border-color:@blueDark;
-                }
-            }
-            .search-accessory.search {
-              top:16px;
-              left:16px;
-
-            }
-            .search-accessory.clear {
-              top:10px;
-              right:10px;
-            }
-        }
-        .content-container {
-        }
-    }
-    &.focused {
-        input[type="text"] {
-          &:focus {
-              box-shadow: none;
-              border-color:@blueDark;
-          }
-        }
-    }
-}
-
-.sheet-toolbar {
-    .btn-toolbar,
-    .message-toolbar-items > div {
-        border-radius: 3px;
-        border: @toolbar-item-border-width solid #dfdfdf;
-        overflow: hidden;
-        background: @toolbar-btn-bg;
-        height:@toolbar-item-height;
-        min-width:@toolbar-item-width;
-        margin-top: 0;
-        box-shadow:none;
-
-        .btn-toolbar {
-            margin:0;
-            border-radius:0;
-            border:none;
-            border-right: @toolbar-item-border-width solid @toolbar-btn-border;
-            height:@toolbar-item-height - 2*@toolbar-item-border-width;
-
-            &[title=Star] {
-                border:none;
-            }
-
-        }
-
-        img.content-mask {
-            background-color: @blueDark;
-        }
-        &:active img.content-mask {
-            background-color: @blueDark;
-        }
         &:hover {
-            background: @toolbar-btn-hover-bg;
-            color: @white;
+            opacity: 1;
+            &:before {
+                opacity: 1;
+                bottom: -5px;
+            }
+            &:after {
+                opacity: 1;
+                bottom: -5px;
+            }
+            .content-mask {
+                transform: translate3d(0, -3px, 0);
+            }
+        }
 
-            & > img.content-mask {
-                background-color: @white;
+        &.toolbar-unsubscribe.unsubscribe-disabled {
+            background: @background-dark;
+            cursor: default;
+
+            img {
+                opacity: 0.3;
+            }
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border: solid 5px transparent;
+            border-bottom-color: @component-active-color;
+            opacity: 0;
+            transform: translate3d(-50%, 0, 0);
+            transition: all 0.2s ease-out;
+            z-index: 3;
+            pointer-events: none;
+        }
+        &:after {
+            content: attr(title);
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            padding: 4px 10px;
+            transform: translate3d(-50%, 98%, 0);
+            background: @component-active-color;
+            color: @white;
+            opacity: 0;
+            white-space: nowrap;
+            z-index: 2;
+            border-radius: 2px;
+            transition: all 0.2s ease-out;
+            border: none;
+            pointer-events: none;
+        }
+        img.content-mask, &.mode-toggle.mode-false img.content-mask {
+            background: @background-dark-accent;
+            transition: transform 0.2s ease-out;
+        }
+
+        &.item-compose {
+            &:before {
+                transform: translate3d(-5px, 0, 0);
+            }
+            &:after {
+                transform: translate3d(-15px, 98%, 0);
+            }
+        }
+
+        &.mode-toggle {
+            &:after {
+                transform: translate3d(-80%, 98%, 0);
             }
         }
     }
+}
 
-    .message-toolbar-items {
-        display: inline-block;
-    }
-    .btn-toolbar.mode-toggle {
-        float:right;
-    }
-    .btn-icon,
-    .item-back {
-        .item-back-title {
-            color:@blueDark;
+.sheet-toolbar-container {
+    background-image: none;
+    background: @toolbar-background-color;
+}
+
+.search-bar .menu .header-container {
+    input {
+        padding: 0.6em 2em 0.6em 1.8em;
+        font-size: 0.9em;
+        line-height: 1.2em;
+        opacity: 0.6;
+        background: @white;
+
+        &:focus {
+            opacity: 1;
         }
-        img.content-mask {
-            background-color:@blueDark;
-        }
     }
+
+    img {
+        opacity: 0.6;
+    }
+}
+
+.toolbar-RootSidebar {
+    left: 0 !important;
+    width: auto !important;
+}
+
+.toolbar-ThreadList {
+    margin-left: 78px;
+    padding-right: 78px;
 }
