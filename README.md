@@ -1,4 +1,4 @@
-# N1 Stripe
+# Mailspring Stripe
 
 Stripe modifies the layout of the Nylas N1 email client by moving the account sidebar to the bottom of the interface.
 
@@ -13,7 +13,18 @@ N1 is designed with an account sidebar in mind. Moving it to the bottom is a CSS
 
 
 ## Installation
-1. Download [Nylas N1](https://nylas.com/n1).
+1. Download [Mailspring](https://getmailspring.com/download).
 2. Download the Stripe theme.
-3. From N1, select `Nylas N1 > Install Theme...`.
+3. From Mailspring, select menu > Install Theme...`.
 4. Find the directory for this plugin to install it.
+
+If you want to manually install, use this cheat sheet and move the package to one of these directories (depends on which system you're using)
+
+
+   | OS           | Location                                                     |
+   |--------------|--------------------------------------------------------------|
+   | macOS        | ~/Library/Application Support/Mailspring/packages/THEME_NAME |
+   | Ubuntu native| ~/.config/Mailspring/packages/THEME_NAME                     |
+   | Ubuntu Snap  | ~/snap/mailspring/common/packages/THEME_NAME                 |
+   | Windows      | %appdata%\Mailspring\packages\THEME_NAME                     |
+
