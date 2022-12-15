@@ -1,9 +1,9 @@
 {
-  "name": "n1-stripe",
+  "name": "Stripe",
   "displayName": "Stripe",
-  "theme": "ui",
+  "theme": "Stripe",
   "version": "0.1.0",
-  "description": "A Nylas N1 theme that displays accounts below your messages.",
+  "description": "Mailspring theme that displays accounts below your messages.",
   "license": "MIT",
   "engines": {
     "mailspring": "*"
